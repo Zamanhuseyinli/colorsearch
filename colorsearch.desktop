@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ColorSearch
+GenericName=Search images and videos by color
+Comment=Scan a folder for images/videos and match by selected color
+Icon=color-picker
+Exec=colorsearch %F
+Terminal=false
+Categories=Graphics;Utility;
+MimeType=inode/directory;
