@@ -22,7 +22,7 @@ elif sys.platform == "win32":
 
 setup(
     name='colorsearch',
-    version='1.0.1',
+    version='1.0.2',
     description='Search images and videos by dominant color (PyQt6)',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -51,7 +51,7 @@ setup(
         'Operating System :: MacOS',
         'Operating System :: Microsoft :: Windows',
         'Topic :: Multimedia :: Graphics',
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
     ],
     python_requires='>=3.8',
 )
