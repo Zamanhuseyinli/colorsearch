@@ -5,11 +5,24 @@ from PyQt6.QtWidgets import (
     QVBoxLayout, QLabel, QHBoxLayout, QMessageBox,
     QScrollArea, QProgressBar, QComboBox, QFileDialog, QPushButton
 )
-from PyQt6.QtGui import QPixmap, QImage, QCursor
+from PyQt6.QtGui import QPixmap, QImage, QCursor,QIcon
 from PyQt6.QtCore import Qt, QThread, pyqtSignal
-
+import sys
+import os
 IMAGE_TYPES = ('.png', '.jpg', '.jpeg', '.bmp', '.gif', '.tiff', '.webp')
 VIDEO_TYPES = ('.mp4', '.mkv', '.webm', '.avi', '.mov', '.flv')
+
+def get_icon_path():
+    if sys.platform.startswith("linux"):
+        return "/usr/share/icons/hicolor/64x64/apps/colorsearch.svg"
+    elif sys.platform == "darwin":
+        base_path = os.path.join(os.path.dirname(sys.argv[0]), "Resources")
+        return os.path.join(base_path, "colorsearch.icns")
+    elif sys.platform == "win32":
+        base_path = os.path.dirname(sys.argv[0])
+        return os.path.join(base_path, "colorsearch.ico")
+    else:
+        return None
 
 def dominant_color(image_path):
     try:
@@ -131,6 +144,10 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("🎨 Color Search")
         self.resize(720, 540)
+
+        icon_path = get_icon_path()
+        if icon_path and os.path.exists(icon_path):
+            self.setWindowIcon(QIcon(icon_path))
 
         central = QWidget()
         self.setCentralWidget(central)
